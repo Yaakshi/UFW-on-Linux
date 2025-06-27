@@ -1,13 +1,19 @@
 # UFW-on-Linux
 
+- A firewall is a network security system that monitors and controls incoming and outgoing network traffic based on pre-defined security rules.
+- UFW (uncomplicated firewall) is a firewall configuration tool that runs on top of iptables, included by default within Ubuntu distributions.
+- It provides a streamlined interface for configuring common firewall use cases via the command line.
+
 ## Basic firewall management skills and understanding of network traffic filtering
 
 1. Verify the status of UFW.
+
 ```sudo ufw status```
 
 ![image](https://github.com/user-attachments/assets/e204cfe9-825d-41d4-8dfe-e9260cc69cd8)
 
 2. Enable UFW and verify status again.
+
 ```sudo ufw enable```
 
 ![image](https://github.com/user-attachments/assets/06e8b898-49f7-4516-b630-e4425e783c8a)
@@ -15,6 +21,7 @@
 Note: Login as root to avoid using sudo in every command.
 
 3. Learn more about UFW
+
 ```man ufw```
 
 ![image](https://github.com/user-attachments/assets/28ed8e7d-3bd5-4079-8f00-b5120dedd637)
@@ -62,7 +69,8 @@ Looks like there are no rules setup initially.
 ![image](https://github.com/user-attachments/assets/30bf7f2f-15f4-46e2-af50-8d5f4622cddd)
 
 - Delete the rules to block outbound traffic to port 80 (HTTP)
-  
+(delete rules based on its ID)
+
 ```ufw delete 3```
 ```ufw delete 7```
 
@@ -70,15 +78,12 @@ Looks like there are no rules setup initially.
 
 - After deleting the rules that blocks the traffic to port 80, now we will be able to access the website normally.
 
+## How firewall filters work?
 
+### Packet filtering
 
-
-
-
-
-
-
-
-
-
-
+- Packet filtering assesses the surface of data packets.
+- It inspects the IP address, source and destination ports and protocols being used.
+- The firewall gathers as much header information as possible.
+- It then compares this information against pre-established security rules.
+- Any data packet that satisfies these security rules is admitted. If not, the packet filter firewall will deny access and the transmission is canceled.
